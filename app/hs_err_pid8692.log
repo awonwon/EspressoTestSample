@@ -1,0 +1,139 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 1048576 bytes for AllocateHeap
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   In 32 bit mode, the process size limit was hit
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Use 64 bit Java on a 64 bit OS
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (memory/allocation.inline.hpp:61), pid=8692, tid=2904
+#
+# JRE version:  (7.0_51-b13) (build )
+# Java VM: Java HotSpot(TM) 64-Bit Server VM (24.51-b03 mixed mode windows-amd64 compressed oops)
+# Failed to write core dump. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x000000000213f000):  JavaThread "Unknown thread" [_thread_in_vm, id=2904, stack(0x00000000022f0000,0x00000000023f0000)]
+
+Stack: [0x00000000022f0000,0x00000000023f0000]
+
+---------------  P R O C E S S  ---------------
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+=>0x000000000213f000 (exited) JavaThread "Unknown thread" [_thread_in_vm, id=2904, stack(0x00000000022f0000,0x00000000023f0000)]
+
+VM state:not at safepoint (normal execution)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+Heap
+ PSYoungGen      total 17920K, used 307K [0x00000000eaa80000, 0x00000000ebe80000, 0x0000000100000000)
+  eden space 15360K, 2% used [0x00000000eaa80000,0x00000000eaaccd38,0x00000000eb980000)
+  from space 2560K, 0% used [0x00000000ebc00000,0x00000000ebc00000,0x00000000ebe80000)
+  to   space 2560K, 0% used [0x00000000eb980000,0x00000000eb980000,0x00000000ebc00000)
+ ParOldGen       total 39936K, used 0K [0x00000000c0000000, 0x00000000c2700000, 0x00000000eaa80000)
+  object space 39936K, 0% used [0x00000000c0000000,0x00000000c0000000,0x00000000c2700000)
+ PSPermGen       total 21504K, used 673K [0x00000000bae00000, 0x00000000bc300000, 0x00000000c0000000)
+  object space 21504K, 3% used [0x00000000bae00000,0x00000000baea8570,0x00000000bc300000)
+
+Card table byte_map: [0x00000000053f0000,0x0000000005620000] byte_map_base: 0x0000000004e19000
+
+Polling page: 0x0000000001c70000
+
+Code Cache  [0x00000000023f0000, 0x0000000002660000, 0x00000000053f0000)
+ total_blobs=38 nmethods=0 adapters=20 free_code_cache=48889Kb largest_free_block=50062528
+
+Compilation events (0 events):
+No events
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (10 events):
+Event: 0.028 loading class 0x0000000001ff4010
+Event: 0.029 loading class 0x0000000001ff4010 done
+Event: 0.029 loading class 0x0000000001ff4060
+Event: 0.029 loading class 0x0000000001ff4060 done
+Event: 0.029 loading class 0x0000000001ff40b0
+Event: 0.029 loading class 0x0000000001ff40b0 done
+Event: 0.030 loading class 0x0000000001ff4e10
+Event: 0.030 loading class 0x0000000001ff4e10 done
+Event: 0.030 loading class 0x0000000001ff4a30
+Event: 0.030 loading class 0x0000000001ff4a30 done
+
+
+Dynamic libraries:
+0x000000013fdb0000 - 0x000000013fde3000 	C:\Program Files\Java\jdk1.7.0_51\bin\java.exe
+0x0000000076f20000 - 0x00000000770c9000 	C:\Windows\SYSTEM32\ntdll.dll
+0x0000000076e00000 - 0x0000000076f1f000 	C:\Windows\system32\kernel32.dll
+0x000007fefcd00000 - 0x000007fefcd6c000 	C:\Windows\system32\KERNELBASE.dll
+0x000007fefda40000 - 0x000007fefdb1b000 	C:\Windows\system32\ADVAPI32.dll
+0x000007fefd110000 - 0x000007fefd1af000 	C:\Windows\system32\msvcrt.dll
+0x000007fefd480000 - 0x000007fefd49f000 	C:\Windows\SYSTEM32\sechost.dll
+0x000007fefdba0000 - 0x000007fefdccd000 	C:\Windows\system32\RPCRT4.dll
+0x0000000076d00000 - 0x0000000076dfa000 	C:\Windows\system32\USER32.dll
+0x000007fefd9a0000 - 0x000007fefda07000 	C:\Windows\system32\GDI32.dll
+0x000007fefd8c0000 - 0x000007fefd8ce000 	C:\Windows\system32\LPK.dll
+0x000007fefd8d0000 - 0x000007fefd999000 	C:\Windows\system32\USP10.dll
+0x000007fefb1f0000 - 0x000007fefb3e4000 	C:\Windows\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.7601.18837_none_fa3b1e3d17594757\COMCTL32.dll
+0x000007fefd090000 - 0x000007fefd101000 	C:\Windows\system32\SHLWAPI.dll
+0x000007fefd890000 - 0x000007fefd8be000 	C:\Windows\system32\IMM32.DLL
+0x000007feff120000 - 0x000007feff229000 	C:\Windows\system32\MSCTF.dll
+0x000000005fac0000 - 0x000000005fb92000 	C:\Program Files\Java\jdk1.7.0_51\jre\bin\msvcr100.dll
+0x000000006e250000 - 0x000000006ea19000 	C:\Program Files\Java\jdk1.7.0_51\jre\bin\server\jvm.dll
+0x000007fef6420000 - 0x000007fef6429000 	C:\Windows\system32\WSOCK32.dll
+0x000007fefdf60000 - 0x000007fefdfad000 	C:\Windows\system32\WS2_32.dll
+0x000007fefda30000 - 0x000007fefda38000 	C:\Windows\system32\NSI.dll
+0x000007fef8d80000 - 0x000007fef8dbb000 	C:\Windows\system32\WINMM.dll
+0x00000000770e0000 - 0x00000000770e7000 	C:\Windows\system32\PSAPI.DLL
+0x0000000070650000 - 0x000000007065f000 	C:\Program Files\Java\jdk1.7.0_51\jre\bin\verify.dll
+0x000000006a570000 - 0x000000006a598000 	C:\Program Files\Java\jdk1.7.0_51\jre\bin\java.dll
+0x000000006f990000 - 0x000000006f9a5000 	C:\Program Files\Java\jdk1.7.0_51\jre\bin\zip.dll
+
+VM Arguments:
+jvm_args: -Xmx1024M -Dfile.encoding=x-windows-950 -Duser.country=TW -Duser.language=zh -Duser.variant 
+java_command: com.android.dx.command.Main --dex --output C:\Users\GTW\Desktop\Android\project\EspressoTest\app\build\intermediates\dex\androidTest\debug C:\Users\GTW\Desktop\Android\project\EspressoTest\app\build\intermediates\classes\androidTest\debug C:\Users\GTW\Desktop\Android\project\EspressoTest\app\build\intermediates\pre-dexed\androidTest\debug\classes-063d7503ccc942b3cf99630dfb0a97fecd6c3aab.jar C:\Users\GTW\Desktop\Android\project\EspressoTest\app\build\intermediates\pre-dexed\androidTest\debug\javax.inject-1-419c607254c9023580d3aa29bade92f0623d10ff.jar C:\Users\GTW\Desktop\Android\project\EspressoTest\app\build\intermediates\pre-dexed\androidTest\debug\classes-1ce4b9d0a10537163854e4b65c8752a900e3f2d2.jar C:\Users\GTW\Desktop\Android\project\EspressoTest\app\build\intermediates\pre-dexed\androidTest\debug\hamcrest-integration-1.3-ce97ed6c3eefcb8a4c35394c33cb27831d409374.jar C:\Users\GTW\Desktop\Android\project\EspressoTest\app\build\intermediates\pre-dexed\androidTest\debug\classes-655599dac40de2e2328ba2337b6501bd070579cf.jar C:\Users\GTW\Desktop\Android\project\EspressoTest\app\build\intermediates\pre-dexed\androidTest\debug\javawriter-2.1.1-3ba0433b74cb27bc995045e86a2b9014f984b6cf.jar C:\Users\GTW\Desktop\Android\project\EspressoTest\app\build\intermediates\pre-dexed\androidTest\debug\hamcrest-core-1.3-2be5650b459c971e3a87eefdca3a1f39091c2bca.jar C:\Users\GTW\Desktop\Android\project\EspressoTest\app\build\intermediates\pre-dexed\androidTest\debug\jsr305-2.0.1-a356b8c96656ec5ebfc68a42a08f8fa1ebf4904d.jar C:\Users\GTW\Desktop\Android\project\EspressoTest\app\build\intermediates\pre-dexed\androidTest\debug\javax.annotation-api-1.2-909b6bc1322a9dbcbe7d6d6d269d92b1fbc75fbc.jar C:\Users\GTW\Desktop\Android\project\EspressoTest\app\build\intermediates\pre-dexed\androidTest\debug\hamcrest-library-1.3-b29bcedf4b5d695f11b663f4fd873a56c43158ca.jar C:\Users\GTW\Desktop\Android\project\EspressoTest\app\build\intermediates\pre-dexed\androidTest\debug\classes-09b5ed9
+Launcher Type: SUN_STANDARD
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk1.7.0_51\jre
+PATH=C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\OpenCL SDK\3.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\3.0\bin\x64;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files\Java\apache-ant-1.9.4\bin;C:\Users\GTW\Desktop\Android\sdk\tools;C:\Users\GTW\Desktop\Android\sdk\platform-tools;C:\Program Files (x86)\Git\bin;C:\cygwin\bin;;C:\Program Files (x86)\Heroku\bin;C:\Program Files (x86)\git\cmd;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files (x86)\nodejs\;C:\Program Files\Sublime Text 3\;C:\Program Files\Java\jdk1.7.0_51\bin;C:\Program Files\010 Editor;C:\Program Files (x86)\Skype\Phone\;C:\ProgramData\chocolatey\bin;C:\Program Files (x86)\vim\vim74;C:\Ruby200\bin;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Common Files\Shoes\3.2.15-gtk2-32\..;C:\Users\GTW\AppData\Roaming\npm;C:\Program Files (x86)\IDM Computer Solutions\UltraEdit\;C:\Users\GTW\AppData\Local\Programs\Python\Python35-32\python.exe;
+USERNAME=GTW
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 58 Stepping 9, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 7 , 64 bit Build 7601 Service Pack 1
+
+CPU:total 4 (2 cores per cpu, 2 threads per core) family 6 model 58 stepping 9, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, aes, erms, ht, tsc, tscinvbit, tscinv
+
+Memory: 4k page, physical 3866388k(51164k free), swap 7522656k(5968k free)
+
+vm_info: Java HotSpot(TM) 64-Bit Server VM (24.51-b03) for windows-amd64 JRE (1.7.0_51-b13), built on Dec 18 2013 18:40:56 by "java_re" with unknown MS VC++:1600
+
+time: Thu Oct 01 15:43:29 2015
+elapsed time: 0 seconds
+
