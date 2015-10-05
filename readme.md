@@ -290,9 +290,10 @@ intended(allOf(
 2. Intending：準備好測試的 Intent 看結果是否達到預期，通常會用在 ActivityResult 的狀況上，如：利用其他相機 App 拍照
 
 > production 程式的動作：
-1. 從 A Activiy 點選 Button 到 B Activiy
-2. 在 B Activiy 上輸入文字，按下 Submit
-3. 把輸入的文字回傳到 A Activity ，並顯示
+>
+> 1. 從 A Activiy 點選 Button 到 B Activiy
+> 2. 在 B Activiy 上輸入文字，按下 Submit
+> 3. 把輸入的文字回傳到 A Activity ，並顯示
 
 範例
 ```java
