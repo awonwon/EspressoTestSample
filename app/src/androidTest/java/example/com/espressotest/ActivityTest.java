@@ -80,7 +80,7 @@ public class ActivityTest {
         /* 單純的 scrollTo */
         onData(anything())
                 .inAdapterView(withId(R.id.list))
-                .atPosition(4)
+        .atPosition(4)
                 .perform(scrollTo());
 
         rest();
@@ -93,7 +93,7 @@ public class ActivityTest {
 
     }
 
-//    @Test
+    //    @Test
     public void pressKeyTest() throws InterruptedException {
         onView(withId(R.id.btnList)).perform(click());
 
