@@ -39,14 +39,14 @@ android {
 }
 ```
 
-<br /><br /><br />
+<br /><br />
 ### Step 2 關閉 animation (Optional)
 avoid flakiness.
 關閉 android 測試裝置上的開發 animation 選項
 
 「**設定 > 開發者工具 > 視窗動畫縮放、轉換動畫縮放、動畫影像時間伸縮效果**」
 
-<br /><br /><br />
+<br /><br />
 ### Step 3 初始化 Test
 在 androidTest/java 資料夾下增加一個 Java Class 並繼承 ActivityInstrumentationTestCase2<要測試的Activity Name>
 
@@ -66,7 +66,7 @@ public class ExpressoTestEx{
 }
 ```
 
-<br /><br /><br />
+<br /><br />
 ### Step 4 撰寫測試
 開始在 class 中寫測試，在自定義的 test method 前加上 **annotation @Test**
 
@@ -86,8 +86,9 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
         onView(withId(R.id.btn_login)).perform(click());
     }
 ```
+Espresso 用法在下方 [參考](https://github.com/awonwon/EspressoTestSample#espresso-%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95)
 
-<br /><br /><br />
+<br /><br />
 ### Step 5 結束前的動作
 
 如果在結束測試時，需要額外做什麼動作，可以自己寫一個方法並且加上 **annotation @After**
@@ -99,7 +100,7 @@ public void custom() throws Exception {
 ```
 This is important to not leak any of the any objects from your tests
 
-<br /><br /><br />
+<br /><br />
 ### Step 6 設定 Run Test Configuration
 
 * 選擇「**Run > Edit Configuration** 」
@@ -109,7 +110,7 @@ This is important to not leak any of the any objects from your tests
 * 在 **General Tab ** 下的 Module 選擇 「**App**」
 
 
-<br /><br /><br />
+<br /><br />
 ### Step 7 奔跑吧！Test
 開始 Run Test 時，記得要把手機解鎖讓他成功執行。
 
@@ -123,6 +124,7 @@ onView(/*ViewMatcher*/))  // onView will reutrn ViewInteration Object
   .check(/*ViewAssertion*/)
 ```
 主要分成四部分：
+
 1. **ViewMatcher**：找到 View
 2. **ViewInteration**：取得對應 View 的物件
 3. **ViewAction**：對 View 做某件事
