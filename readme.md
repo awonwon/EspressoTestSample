@@ -16,14 +16,14 @@ Espresso 是一個以工具基礎的 API ，並利用 AndroidJunitRunner 來執�
 ```
 dependencies {
     // App's dependencies, including test
-    compile 'com.android.support:support-annotations:22.2.0'    
+    compile 'com.android.support:support-annotations:22.2.0'
     androidTestCompile 'com.android.support.test:runner:0.3'
     androidTestCompile 'com.android.support.test:rules:0.3'
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.2'
-    
+
     // Optional : 測 Intent 時會使用到
     androidTestCompile 'com.android.support.test.espresso:espresso-intents:2.2.1'
-    
+
     // Optional : ViewMatcher 的額外 Support Library
     androidTestCompile 'org.testinfected.hamcrest-matchers:hamcrest-matchers:1.8'
 }
@@ -39,14 +39,14 @@ android {
 }
 ```
 
-
+<br /><br /><br />
 ### Step 2 關閉 animation (Optional)
 avoid flakiness.
 關閉 android 測試裝置上的開發 animation 選項
 
 「**設定 > 開發者工具 > 視窗動畫縮放、轉換動畫縮放、動畫影像時間伸縮效果**」
 
-
+<br /><br /><br />
 ### Step 3 初始化 Test
 在 androidTest/java 資料夾下增加一個 Java Class 並繼承 ActivityInstrumentationTestCase2<要測試的Activity Name>
 
@@ -58,7 +58,7 @@ avoid flakiness.
 public class ExpressoTestEx{
     @Rule
     public ActivityTestRule<LoginActivity> mActivityRule = new ActivityTestRule(LoginActivity.class);
-    
+
     @Before
     public void custom() throws Exception {
         //do something…
@@ -66,7 +66,7 @@ public class ExpressoTestEx{
 }
 ```
 
-
+<br /><br /><br />
 ### Step 4 撰寫測試
 開始在 class 中寫測試，在自定義的 test method 前加上 **annotation @Test**
 
@@ -82,42 +82,45 @@ import static android.support.test.espresso.matcher.ViewMatchers.withId;
 ...
     @Test
     public void checkLogin() {
-    	// Test Code
+      // Test Code
         onView(withId(R.id.btn_login)).perform(click());
     }
 ```
 
-
+<br /><br /><br />
 ### Step 5 結束前的動作
 
 如果在結束測試時，需要額外做什麼動作，可以自己寫一個方法並且加上 **annotation @After**
 ```java
 @After
 public void custom() throws Exception {
-	// do something
+  // do something
 }
 ```
 This is important to not leak any of the any objects from your tests
 
-
+<br /><br /><br />
 ### Step 6 設定 Run Test Configuration
 
 * 選擇「**Run > Edit Configuration** 」
 
-	打開視窗後，點選左上角的的「**+**」新增一個 **Android Tests**，並命名你的 Run Configuration
+  打開視窗後，點選左上角的的「**+**」新增一個 **Android Tests**，並命名你的 Run Configuration
 
 * 在 **General Tab ** 下的 Module 選擇 「**App**」
 
+
+<br /><br /><br />
 ### Step 7 奔跑吧！Test
 開始 Run Test 時，記得要把手機解鎖讓他成功執行。
 
 
+<br /><br /><br /><br /><br />
 ## Espresso 使用方法
 ###  **基本使用**
 ```java
 onView(/*ViewMatcher*/))  // onView will reutrn ViewInteration Object
-	.perform(/*ViewAction*/)
-	.check(/*ViewAssertion*/)
+  .perform(/*ViewAction*/)
+  .check(/*ViewAssertion*/)
 ```
 主要分成四部分：
 1. **ViewMatcher**：找到 View
@@ -131,8 +134,8 @@ onView(/*ViewMatcher*/))  // onView will reutrn ViewInteration Object
 範例：
 ```java
 onView(withId(R.id.test_view)) // Matcher
-	.perform(click()) // Action
-	.check(matched(isDisplayed())); //Assert
+  .perform(click()) // Action
+  .check(matched(isDisplayed())); //Assert
 ```
 執行的流程為：
 1. Espresso 跟 View 進行互動，須指定一個 view，可透過 onView 取得 [ViewInteration](https://developer.android.com/reference/android/support/test/espresso/ViewInteraction.html) 物件，進行後續操作
@@ -145,14 +148,16 @@ onView(withId(R.id.test_view)) // Matcher
 
 > **Note**: onView() 方法並不會檢查指定的 View 是否存在，ViewMatcher 會在現有的 View hierarchy 尋找，如果沒有符合條件的 View， onView 則會拋出 NoMatchingViewException 。
 
+<br /><br />
+
 ####  **[ViewMatcher](https://developer.android.com/reference/android/support/test/espresso/matcher/ViewMatchers.html)** : 負責找View
 ViewMatcher 也支持 [Hamcrest matchers](http://hamcrest.org/JavaHamcrest/javadoc/1.3/org/hamcrest/Matchers.html) 類別來處理，常用的方法有以下幾種：
 
 1. 根據 ID 找 View
-`withId(R.id.test_view) ` 
+`withId(R.id.test_view) `
 
 2. 根據 View 的 Text 內容找到 View
-`withText("Test")` 
+`withText("Test")`
 withText 內還可以使用其他過濾字串的方法，如： equalToIgnoringWhiteSpace、startsWith、endWith 等，詳情可以參考[此篇](http://qathread.blogspot.tw/2014/01/discovering-espresso-for-android.html)。
 
 3. 利用 allOf() 加入多個 filter 條件，可參考 [Hamcrest matchers](http://hamcrest.org/JavaHamcrest/javadoc/1.3/org/hamcrest/Matchers.html) 類別用法。
@@ -160,6 +165,7 @@ withText 內還可以使用其他過濾字串的方法，如： equalToIgnoringW
 在 filter 當中，也可以用 [hasSibling()](https://developer.android.com/reference/android/support/test/espresso/matcher/ViewMatchers.html#hasSibling%28org.hamcrest.Matcher%3Candroid.view.View%3E%29) 、 [is()](http://hamcrest.org/JavaHamcrest/javadoc/1.3/org/hamcrest/Matchers.html#is%28java.lang.Class%29) 、[instanceOf()](http://hamcrest.org/JavaHamcrest/javadoc/1.3/org/hamcrest/Matchers.html#instanceOf%28java.lang.Class%29) 等等來判斷條件。
  > **Notes**: hasSibling() ：為了沒辦法使用 withId 或 withText 搜尋的狀況，可以用此方法找到同階層隔壁的 View 來指定你想要的 View。
 
+<br />
 #### **[ViewAction](https://developer.android.com/reference/android/support/test/espresso/action/ViewActions.html)**  : 對 View 做動作
 取得 [ViewInteration](https://developer.android.com/reference/android/support/test/espresso/ViewInteraction.html) 後，可以使用 perform() 執行想要的 ViewAction，參數可帶多個，常用的 ViewAction 有：
 
@@ -186,9 +192,9 @@ EspressoKey.Builder builder = new EspressoKey.Builder();
 pressKey(builder.build());
 ```
 
-
+<br />
 #### **[ViewAssertion](https://developer.android.com/reference/android/support/test/espresso/assertion/ViewAssertions.html)** : 驗證 View
-取得 [ViewInteration](https://developer.android.com/reference/android/support/test/espresso/ViewInteraction.html) 後，可以利用 check() 來驗證 View 的狀態，主要有三種方法： 
+取得 [ViewInteration](https://developer.android.com/reference/android/support/test/espresso/ViewInteraction.html) 後，可以利用 check() 來驗證 View 的狀態，主要有三種方法：
 
 1. matches()：指定 View 為存在
 
@@ -200,10 +206,10 @@ pressKey(builder.build());
 範例：
 ```java
 onView(withId(R.id.test_view))
-	.check(matches(withText("hello")));
+  .check(matches(withText("hello")));
 ```
 
-
+<br /><br /><br />
 ### **情境系列**
 #### **開啟 Action Bar Menu**
 ```java
@@ -211,6 +217,7 @@ openActionBarOverflowOrOptionsMenu(getInstrumentation().getTargetContext());
 onView(withText("Settings")).perform(click());
 ```
 
+<br /><br />
 #### **Adapter Based Views**
 若有 ListView, GridView, Spinner 等等以 Adapter 為基礎的 View，則改成透過 onData() 取得 [DataInteration](https://developer.android.com/reference/android/support/test/espresso/DataInteraction.html)，並且不需要 ScrollTo 到指定位置點選 item ，只要呼叫 atPosition 即會自動處理 Scroll 到指定 item。
 主要常用方法：
@@ -234,11 +241,12 @@ onData(allOf(instanceOf(ListActivity.Item.class)))
         .atPosition(9)
         .onChildView(withId(R.id.switch1))
         .perform(click());
-        
-//範例的 Adapter Item 是寫在 ListActivity 的 Inner Class        
+
+//範例的 Adapter Item 是寫在 ListActivity 的 Inner Class
 ```
 
 
+<br /><br />
 #### **Intent**
 如果要測試 Intent 是否正確的話，會跟上述 Acitivy 測試方法些微不同，需要額外新增一個測試，並做以下設定：
 
@@ -257,11 +265,10 @@ androidTestCompile 'com.android.support.test.espresso:espresso-intents:2.2.1
 
 * 如果只想要跑 Intent 的Test，也可以到 Test Configuration 中 General Tab 下的「**Specific instrumentation runner**」指定某個 Test Class
 
-
+<br />
 在 Intent Test中，會改用 [IntentMatcher](https://developer.android.com/reference/android/support/test/espresso/intent/matcher/IntentMatchers.html) 來捕捉 Intent 內容，像有 hasAction()、hasComponent()、hasData() 與 toPackage() 等用法。
 
-
-
+<br />
 主要分為兩種測試 Intent 方式：
 
 1. Intended：捕捉發送出去的 Intent 是否跟測試中寫的一樣
@@ -293,11 +300,12 @@ resultData.putExtra("msg","IntendingResult測試用");
 nstrumentation.ActivityResult result = new Instrumentation.ActivityResult(Activity.RESULT_OK, resultData);
 
 intending(hasComponent("example.com.espressotest.ResultActivity"))
-	.respondWith(result);
-	
+  .respondWith(result);
+
 onView(withId(R.id.btnResult)).perform(click());
 ```
 
+<br /><br /><br /><br /><br />
 # Exception Solution
 
 > android.support.test.espresso.NoActivityResumedException: No activities in stage RESUMED. Did you forget to launch the activity. (test.getActivity() or similar)?
@@ -321,6 +329,8 @@ typeText 使用英文比較保險
 
 在 Click View 時，要確保 SoftKeyBoard 是關閉的
 
+
+<br /><br /><br /><br /><br />
 # Reference
 > 官方文件
 
