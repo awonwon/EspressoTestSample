@@ -119,14 +119,14 @@ This is important to not leak any of the any objects from your tests
 ## Espresso 使用方法
 ###  **基本使用**
 ```java
-onView(/*ViewMatcher*/))  // onView will reutrn ViewInteration Object
+onView(/*ViewMatcher*/))  // onView will reutrn ViewInteraction Object
   .perform(/*ViewAction*/)
   .check(/*ViewAssertion*/)
 ```
 主要分成四部分：
 
 1. **ViewMatcher**：找到 View
-2. **ViewInteration**：取得對應 View 的物件
+2. **ViewInteraction**：取得對應 View 的物件
 3. **ViewAction**：對 View 做某件事
 4. **ViewAssertion**：Assert 驗證 View 狀態
 
@@ -140,7 +140,7 @@ onView(withId(R.id.test_view)) // Matcher
   .check(matched(isDisplayed())); //Assert
 ```
 執行的流程為：
-1. Espresso 跟 View 進行互動，須指定一個 view，可透過 onView 取得 [ViewInteration](https://developer.android.com/reference/android/support/test/espresso/ViewInteraction.html) 物件，進行後續操作
+1. Espresso 跟 View 進行互動，須指定一個 view，可透過 onView 取得 [ViewInteraction](https://developer.android.com/reference/android/support/test/espresso/ViewInteraction.html) 物件，進行後續操作
 
 2. Matcher 根據 R.id.test_view 找到 View
 
@@ -169,7 +169,7 @@ withText 內還可以使用其他過濾字串的方法，如： equalToIgnoringW
 
 <br />
 #### **[ViewAction](https://developer.android.com/reference/android/support/test/espresso/action/ViewActions.html)**  : 對 View 做動作
-取得 [ViewInteration](https://developer.android.com/reference/android/support/test/espresso/ViewInteraction.html) 後，可以使用 perform() 執行想要的 ViewAction，參數可帶多個，常用的 ViewAction 有：
+取得 [ViewInteraction](https://developer.android.com/reference/android/support/test/espresso/ViewInteraction.html) 後，可以使用 perform() 執行想要的 ViewAction，參數可帶多個，常用的 ViewAction 有：
 
 1. click()
 `perform(click())`
@@ -196,7 +196,7 @@ pressKey(builder.build());
 
 <br />
 #### **[ViewAssertion](https://developer.android.com/reference/android/support/test/espresso/assertion/ViewAssertions.html)** : 驗證 View
-取得 [ViewInteration](https://developer.android.com/reference/android/support/test/espresso/ViewInteraction.html) 後，可以利用 check() 來驗證 View 的狀態，主要有三種方法：
+取得 [ViewInteraction](https://developer.android.com/reference/android/support/test/espresso/ViewInteraction.html) 後，可以利用 check() 來驗證 View 的狀態，主要有三種方法：
 
 1. matches()：指定 View 為存在
 
@@ -221,7 +221,7 @@ onView(withText("Settings")).perform(click());
 
 <br /><br />
 #### **Adapter Based Views**
-若有 ListView, GridView, Spinner 等等以 Adapter 為基礎的 View，則改成透過 onData() 取得 [DataInteration](https://developer.android.com/reference/android/support/test/espresso/DataInteraction.html)，並且不需要 ScrollTo 到指定位置點選 item ，只要呼叫 atPosition 即會自動處理 Scroll 到指定 item。
+若有 ListView, GridView, Spinner 等等以 Adapter 為基礎的 View，則改成透過 onData() 取得 [DataInteraction](https://developer.android.com/reference/android/support/test/espresso/DataInteraction.html)，並且不需要 ScrollTo 到指定位置點選 item ，只要呼叫 atPosition 即會自動處理 Scroll 到指定 item。
 主要常用方法：
 
 1. inAdapterView( **ViewMatcher** )用以指定 Adapter View
