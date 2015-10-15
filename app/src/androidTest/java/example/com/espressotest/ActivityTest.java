@@ -21,7 +21,6 @@ import static android.support.test.espresso.action.ViewActions.clearText;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.closeSoftKeyboard;
 import static android.support.test.espresso.action.ViewActions.pressKey;
-import static android.support.test.espresso.action.ViewActions.scrollTo;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.matcher.ViewMatchers.hasSibling;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
@@ -42,7 +41,7 @@ public class ActivityTest {
     @Test
     public void Basic() throws InterruptedException {
         onView(withId(R.id.btnSummit)).perform(click());
-
+        onView(withId(R.id.chb2)).perform(click());
         rest();
 
         /* 輸入文字 & 關閉鍵盤 */
@@ -77,20 +76,12 @@ public class ActivityTest {
 
         rest();
 
-        /* 單純的 scrollTo */
-        onData(anything())
-                .inAdapterView(withId(R.id.list))
-        .atPosition(4)
-                .perform(scrollTo());
-
-        rest();
-
         /* 如果是對 Item Click 的話，會直接幫忙 Scroll + Click */
         onData(allOf(instanceOf(ListActivity.Item.class)))
-                .atPosition(9)
+                .atPosition(1)
                 .onChildView(withId(R.id.switch1))
                 .perform(click());
-
+        rest();
     }
 
     //    @Test
@@ -120,7 +111,8 @@ public class ActivityTest {
         rest();
     }
 
+    /* rest 僅是將每一個操措測試變為慢動作，瞭解測試在做什麼 */
     public void rest() throws InterruptedException {
-        Thread.sleep(2 * 1000);
+        Thread.sleep(3 * 1000);
     }
 }

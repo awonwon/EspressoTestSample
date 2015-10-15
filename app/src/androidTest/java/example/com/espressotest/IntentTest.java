@@ -24,6 +24,8 @@ import static android.support.test.espresso.intent.matcher.IntentMatchers.toPack
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 import static org.hamcrest.Matchers.allOf;
 
+//import static android.support.test.espresso.Espresso.pressBack;
+
 /**
  * Created by GTW on 2015/9/25.
  */
@@ -51,7 +53,8 @@ public class IntentTest {
     @Test
     public void intentDialerTest() throws InterruptedException {
         String PACKAGE_NAME = "com.android.mms";
-        Uri INTENT_DATA_PHONE_NUMBER = Uri.parse("sms:" + "0123456");
+        String number = "0123456";
+        Uri INTENT_DATA_PHONE_NUMBER = Uri.parse("sms:" + number);
 
         onView(withId(R.id.btnSMS)).perform(click());
 
@@ -69,12 +72,15 @@ public class IntentTest {
 
     }
 
+
+
     @After
     public void close() throws InterruptedException {
         rest();
     }
 
+    /* rest 僅是將每一個操措測試變為慢動作，瞭解測試在做什麼 */
     public void rest() throws InterruptedException {
-        Thread.sleep(2 * 1000);
+        Thread.sleep(3 * 1000);
     }
 }
